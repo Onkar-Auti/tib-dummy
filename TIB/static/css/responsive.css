@@ -1,0 +1,327 @@
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width:868px) {
+    #nav {
+        padding: 0 10px;
+    }
+
+    .icon {
+        display: block;
+        font-size: 35px;
+    }
+
+    #nav .logo a img {
+        max-width: 70px;
+    }
+
+    .icon.hide {
+        display: none;
+    }
+
+    #nav .menu-list {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        bottom: 0;
+        width: 100%;
+        max-width: 400px;
+        background-color: #222;
+        padding: 40px 0;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        z-index: 99999 !important;
+
+    }
+
+    #nav .menu-list.active {
+        left: 0%;
+    }
+
+    .menu-list li {
+        display: block;
+    }
+
+    #nav .menu-list li {
+        margin-top: 45px;
+    }
+
+    #nav .menu-list li a {
+        font-size: 23px;
+        color: white;
+    }
+
+    /* .card-icons {
+        display: none;
+    }
+
+    .card-icons i {
+        display: none;
+    } */
+
+    .responsive-icons i {
+        display: block;
+        color: white;
+        font-size: 23px;
+    }
+
+    .menu-list .dropdown {
+        display: none;
+    }
+
+    /* category-section --------  */
+
+    .latest-head {
+        font-size: 23px;
+        margin: 25px 0;
+    }
+
+    .category_card {
+        margin-bottom: 25px;
+    }
+
+    .category-head {
+        margin: 0 0 20px 0 !important;
+    }
+
+    .shopify-head {
+        font-size: 20px;
+    }
+
+    .shopify-offer-head {
+        font-size: 19px;
+
+    }
+
+    .feature-head {
+        margin: 0;
+    }
+
+
+    /* --------------- trying ----------------------  */
+
+    #nav .wrapper {
+        flex-direction: row-reverse;
+        padding: 0px
+    }
+
+    .desktop-icon {
+        display: none;
+
+    }
+
+    .desktop-image {
+        display: none;
+    }
+
+    .responsive-nav {
+        display: block;
+        display: flex;
+    }
+
+    .logo {
+        margin-right: 59px;
+    }
+
+    .for-responsive {
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* ------ shofipy-section --------  */
+
+    .shopify-section {
+        height: auto;
+    }
+
+    #footer {
+        margin-top: 25px;
+    }
+
+    .footer ul {
+        padding: 0;
+    }
+
+
+    /* ----------------------- Product-cart ---------------  */
+    .card-section {
+        margin: 0;
+    }
+
+    .gallery-main {
+        width: 100%;
+    }
+
+    .gallery-container {
+        width: 100%;
+    }
+
+    .gallery-thumbs {
+        display: none;
+    }
+
+    .product-heading {
+        margin: 22px 0;
+    }
+
+    /* .card-slider {
+        display: none;
+    } */
+
+    /* -----------------------cart ---------------  */
+    .card-empty {
+        margin: 30px 0;
+    }
+
+    .empty-head {
+        font-size: 19px;
+
+    }
+
+    .cart-head {
+        margin-bottom: 25px;
+        font-size: 25px;
+    }
+
+    .item_details {
+        margin-left: 20px;
+    }
+
+    .item_name a h5 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .item_remove_btn a {
+        font-size: 16px;
+    }
+
+    /* ---------------- checkout page ---------------  */
+    .checkout {
+        margin: 30px 0;
+    }
+
+    .checkout-one {
+        padding: 0;
+    }
+
+    .checkout-form {
+        display: block;
+    }
+
+    .Shipping-input input {
+        width: 100%;
+    }
+
+    .city-input input {
+        width: 100% !important;
+    }
+
+    .item {
+        margin-bottom: 20px;
+    }
+
+    .promo-code {
+        padding: 20px 0;
+    }
+
+    .item_name h5 {
+        font-size: 18px;
+    }
+
+    .checkout-subtotals h3 {
+        font-size: 18px;
+    }
+
+    .checkout-total-heading h3 {
+        font-size: 21px;
+    }
+
+    .checkout-total-heading h6 {
+        font-size: 14px;
+    }
+
+
+    /* ----------------- user dashboard ------------------  */
+    .dashboard {
+        padding: 2rem 0;
+    }
+
+    .account-head {
+        font-size: 25px;
+    }
+
+    .user_info_cards {
+        margin-top: 2rem;
+        height: 140px;
+    }
+
+
+
+    /* ------------------ review order -----------------  */
+    .review-heading {
+        font-size: 21px;
+        margin-bottom: 30px;
+    }
+
+    .shipping-head {
+        font-size: 21px;
+    }
+
+    .shipping-names {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .order-heading {
+        font-size: 17px;
+    }
+
+    /* --------------------- my order ------------------  */
+    .side_panel {
+        display: none;
+    }
+
+    .wrapper {
+        display: block;
+    }
+
+    .user_dash {
+        padding: 30px 0;
+    }
+
+    .my-order {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+
+    .item {
+        padding: 0;
+    }
+    .table thead tr th {
+        font-size: 15px;
+    }
+    .table tbody tr th a {
+        font-size: 13px;
+    }
+    .table tbody tr td {
+        font-size: 13px;
+    }
+
+
+
+
+    /* --------------------- edit profile dashboard ------------------  */
+    .profile-input input {
+      width: 100%;
+    }
+
+
+    /* ----------------address dashboard --------------  */
+    .info-form {
+        display: block;
+    }
+    .info-form div input {
+        width: 100%;
+    }
+}

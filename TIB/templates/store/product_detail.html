@@ -1,0 +1,204 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Product-Detail{% endblock title %}
+{% block main-content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <section class="card-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="gallery-container">
+                        <div class="swiper-container gallery-main">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide product-detail">
+                                    <img src="{{single_product.images.url}}">
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://picsum.photos/seed/slide2/600/300" alt="Slide 02">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide3/600/300" alt="Slide 03">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://picsum.photos/seed/slide4/600/300" alt="Slide 04">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide5/600/300" alt="Slide 05">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide6/600/300" alt="Slide 06">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide7/600/300" alt="Slide 07">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide8/600/300" alt="Slide 08">
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <img src="https://picsum.photos/seed/slide9/600/300" alt="Slide 09">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://picsum.photos/seed/slide10/600/300" alt="Slide 10">
+                                </div>
+                            </div>
+                            <!-- <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div> -->
+                        </div>
+                    </div>
+
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide card-slider">
+                                <img src="{{single_product.images.url}}" alt="Slide 01">
+                            </div>
+                            <div class="swiper-slide card-slider">
+                                <img src="https://picsum.photos/seed/slide2/115/100" alt="Slide 02">
+                            </div>
+                            <div class="swiper-slide card-slider">
+                                <img src="https://picsum.photos/seed/slide3/115/100" alt="Slide 03">
+                            </div>
+                            <div class="swiper-slide card-slider">
+                                <img src="https://picsum.photos/seed/slide4/115/100" alt="Slide 04">
+                            </div>
+                            <!-- <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide5/115/100" alt="Slide 05">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide6/115/100" alt="Slide 06">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide7/115/100" alt="Slide 07">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide8/115/100" alt="Slide 08">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide9/115/100" alt="Slide 09">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://picsum.photos/seed/slide10/115/100" alt="Slide 10">
+                        </div> -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="featured-card_body">
+                        <h2 class="product-heading">{{single_product.product_name}}</h2>
+                        <div class="price">
+                            <!-- <strike class="strike-price product-heading product-price">₹350.0</strike> -->
+                            <span class="product-heading product-price">₹ {{single_product.price}}</span>
+                        </div>
+                        <p class="product-info">{{single_product.description}}</p>
+                    </div>
+                   
+                    
+                    <div class="form-floating d-flex justify-content-between">
+                        <select name="size" class="form-select shadow-none" id="floatingSelect" aria-label="Floating label select example" required>
+                            <option value="" selected disabled>Choose Batch</option>
+                            {% for i in single_product.batch_set.all%}
+                            <option value="{{i.variation_value | lower}}" class="select-option">{{i.variation_value |capfirst}}</option>
+                            {% endfor %}
+                        </select>
+
+                        <select name="color" class="form-select shadow-none" id="floatingSelect" aria-label="Floating label select example" required>
+                            <option value="" selected disabled>Choose Sharing Package</option>
+                            {% for i in single_product.variations_set.colors%}
+                            <option value="{{i.variation_value | lower}}" class="select-option">{{i.variation_value |capfirst}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>                    
+
+                    {% if single_product.stock <= 0 %} 
+                    
+                        <h5 class="out-off">Out of Stock</h5>
+                   
+                {% else %}
+                <button type="submit" class="card-button">Book Now</button>
+                {% endif %}
+                <div>
+                    <h4 class="product-high">PRODUCT HIGHLIGHTS</h4>
+                    <div class="d-flex justify-content-between">
+                        <div class="product-svg">
+                            <svg height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66.8 66.08">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_2-2" data-name="Layer 2">
+                                        <path
+                                            d="M63.09,36.88A9.38,9.38,0,0,0,52.53,26.31a9.39,9.39,0,0,0-14.94,0A9.38,9.38,0,0,0,27,36.88a9.37,9.37,0,0,0,0,14.93A9.38,9.38,0,0,0,37.59,62.38a9.39,9.39,0,0,0,14.94,0A9.38,9.38,0,0,0,63.09,51.81a9.37,9.37,0,0,0,0-14.93Zm-2,13.32a1.25,1.25,0,0,0-.55,1.33,6.89,6.89,0,0,1-8.27,8.27,1.23,1.23,0,0,0-1.33.55,6.89,6.89,0,0,1-11.7,0,1.23,1.23,0,0,0-1.05-.58,1.27,1.27,0,0,0-.28,0,6.89,6.89,0,0,1-8.27-8.27,1.25,1.25,0,0,0-.56-1.33,6.9,6.9,0,0,1,0-11.7,1.27,1.27,0,0,0,.56-1.33,6.89,6.89,0,0,1,8.27-8.28,1.23,1.23,0,0,0,1.33-.55,6.89,6.89,0,0,1,11.7,0,1.23,1.23,0,0,0,1.33.55,6.89,6.89,0,0,1,8.27,8.28,1.26,1.26,0,0,0,.55,1.33,6.89,6.89,0,0,1,0,11.7Zm-4.85-7.15A1.24,1.24,0,0,1,55,44.16h-.14a1.24,1.24,0,0,1-1.1-1.37,3.35,3.35,0,0,0-4.46-3.54,1.26,1.26,0,0,1-1.39-.39,3.35,3.35,0,0,0-5.66.65A1.24,1.24,0,0,1,40,38.43a5.84,5.84,0,0,1,9.27-1.76,5.84,5.84,0,0,1,7,6.38ZM46.3,49.81a1.24,1.24,0,0,1-2.39.68A2.11,2.11,0,0,0,42.47,49a2.15,2.15,0,0,0-2,.45,1.24,1.24,0,0,1-1.43.16,2.06,2.06,0,0,0-2,0,2.11,2.11,0,0,0-1.1,1.73,1.24,1.24,0,0,1-1.24,1.17h-.07a1.24,1.24,0,0,1-1.17-1.31,4.62,4.62,0,0,1,2.38-3.77,4.54,4.54,0,0,1,3.69-.31,4.58,4.58,0,0,1,6.81,2.68ZM26.64,19.53a6.51,6.51,0,0,0,0-10,6.52,6.52,0,0,0-7.11-7.11,6.51,6.51,0,0,0-10,0A6.52,6.52,0,0,0,2.37,9.48a6.51,6.51,0,0,0,0,10.05,6.52,6.52,0,0,0,7.11,7.11,6.51,6.51,0,0,0,10.05,0,6.52,6.52,0,0,0,7.11-7.11Zm-2.56-.28a4,4,0,0,1-4.83,4.83,1.24,1.24,0,0,0-1.33.55,4,4,0,0,1-6.83,0A1.23,1.23,0,0,0,10,24.05a1.33,1.33,0,0,0-.28,0,4,4,0,0,1-4.83-4.83,1.23,1.23,0,0,0-.55-1.33,4,4,0,0,1,0-6.83,1.23,1.23,0,0,0,.55-1.33A4,4,0,0,1,9.76,4.93a1.23,1.23,0,0,0,1.33-.55,4,4,0,0,1,6.83,0,1.24,1.24,0,0,0,1.33.55,4,4,0,0,1,4.83,4.83,1.23,1.23,0,0,0,.55,1.33,4,4,0,0,1,0,6.83A1.23,1.23,0,0,0,24.08,19.25Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h6 class="prodoct-soft mt-2">Soft & Cozy</h6>
+                        </div>
+
+                        <div class="product-svg">
+                            <svg height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.29 50.26">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_2-2" data-name="Layer 2">
+                                        <path
+                                            d="M33,50.26A1.47,1.47,0,0,1,32,49.84l-6.79-6.78-6.84,6.78a1.47,1.47,0,0,1-1.06.42,1.44,1.44,0,0,1-1.06-.42,1.47,1.47,0,0,1-.45-1.06,1.53,1.53,0,0,1,.44-1.06L23,40.93,17.27,35.2,10.48,42a1.56,1.56,0,0,1-2.13,0,1.5,1.5,0,0,1,0-2.12L15.14,33,9.42,27.3,2.57,34.09a1.51,1.51,0,0,1-1.06.42,1.49,1.49,0,0,1-1.06-.42A1.49,1.49,0,0,1,.45,32l6.84-6.79L.5,18.33a1.5,1.5,0,0,1-.45-1.06A1.47,1.47,0,0,1,.5,16.21a1.5,1.5,0,0,1,1.06-.45,1.47,1.47,0,0,1,1.06.45l6.79,6.84,5.73-5.78L8.35,10.48a1.51,1.51,0,0,1,0-2.13,1.51,1.51,0,0,1,2.13,0l6.84,6.79,5.73-5.72L16.26,2.57a1.47,1.47,0,0,1,0-2.12,1.47,1.47,0,0,1,2.12,0l6.79,6.84L32,.5a1.47,1.47,0,0,1,2.12,0,1.5,1.5,0,0,1,.45,1.06,1.47,1.47,0,0,1-.45,1.06L27.3,9.41,33,15.14l6.85-6.73a1.51,1.51,0,0,1,2.57,1.06A1.5,1.5,0,0,1,42,10.53L35.2,17.32l5.73,5.73,6.79-6.79a1.5,1.5,0,0,1,1.06-.45,1.47,1.47,0,0,1,1.06.45,1.47,1.47,0,0,1,0,2.12l-6.79,6.79L49.84,32a1.49,1.49,0,0,1,0,2.13,1.48,1.48,0,0,1-1.06.42,1.51,1.51,0,0,1-1.06-.42L40.93,27.3,35.2,33l6.74,6.85a1.47,1.47,0,0,1,0,2.12,1.47,1.47,0,0,1-1.06.42A1.44,1.44,0,0,1,39.82,42L33,35.2,27.3,40.93l6.79,6.79a1.49,1.49,0,0,1,.44,1.06,1.46,1.46,0,0,1-.44,1.06A1.47,1.47,0,0,1,33,50.26ZM19.45,33.08l5.72,5.73L30.9,33l-5.73-5.73Zm7.85-7.91L33,30.9l5.73-5.73L33,19.44Zm-15.76,0,5.78,5.73,5.73-5.73-5.78-5.72Zm7.91-7.85,5.72,5.73,5.73-5.78-5.73-5.73Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h6 class="prodoct-soft mt-2"> MicroModal</h6>
+                        </div>
+
+                        <div class="product-svg">
+                            <svg height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.63 44.63">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_2-2" data-name="Layer 2">
+                                        <path
+                                            d="M37,21.42a1.2,1.2,0,0,1,0,1.74l-5.6,5.6A1.24,1.24,0,0,1,29.65,27l3.48-3.48H11.45L14.93,27a1.22,1.22,0,0,1-.9,2.08,1,1,0,0,1-.84-.35l-5.6-5.55a1.2,1.2,0,0,1,0-1.74l5.6-5.6a1.23,1.23,0,0,1,1.74,1.73l-3.48,3.48H33.17L29.7,17.6a1.23,1.23,0,1,1,1.74-1.73ZM1.24,0A1.23,1.23,0,0,0,0,1.24V43.39a1.23,1.23,0,0,0,1.24,1.24,1.23,1.23,0,0,0,1.24-1.24V1.24A1.23,1.23,0,0,0,1.24,0ZM43.39,0a1.23,1.23,0,0,0-1.24,1.24V43.39a1.24,1.24,0,0,0,2.48,0V1.24A1.23,1.23,0,0,0,43.39,0Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h6 class="prodoct-soft mt-2">Body Adaptive</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+</form>
+<!-- Category Section -->
+<section class="more-prdouct">
+    <div class="container">
+        <h2 class="heading latest-head">You might also like</h2>
+        <div class="row">
+
+            {% for product in products %}
+            <div class="col-md-3">
+                <div class="category_content_layout container">
+                    <div class="category_card">
+                        <div class="c_card_img">
+                            <a href="">
+                                <img src="{{product.images.url}}" alt="Product" />
+                            </a>
+                            <div class="catergory_card_tag">
+                                <span class="">{{product.category}}</span>
+                            </div>
+                        </div>
+                        <div class="card_bottom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</section>
+{% endblock main-content %}

@@ -1,0 +1,93 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block main-content %}
+
+{% if 'search' in request.path%}
+    <section class="">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <div class="card text-white">
+                        
+                        <img src="/static/assets/images/Band.jpg" class="card-img" alt="...">
+
+                        <div class="card-img-overlay">
+                            <h5 class="heading t-shirt-head">Search Results</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% else %}
+    <!-- <section class="">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    <div class="card text-white">
+                        {% if 't-shirt' in request.path %}
+                        <img src="/static/assets/images/t-shirt-covers.webp" class="card-img" alt="...">
+                        {% elif 'hoodie' in request.path %}
+                        <img src="/static/assets/images/mobile.jpg" class="card-img" alt="...">
+                        {% elif 'mobile-covers' in request.path %}
+                        <img src="/static/assets/images/mobile cover.jpg" class="card-img" alt="...">
+                        {% else %}
+                        <img src="/static/assets/images/t-shirt-covers.webp" class="card-img" alt="...">
+                        {% endif %}
+                        <div class="card-img-overlay">
+                            {% for product in products %}
+                            <h5 class="heading t-shirt-head">{{product.category}}</h5>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    {% endif %}
+
+    <section class="t-shirt-section">
+
+        <div class="container-fluid">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-3"> 
+                    <div class="card shopify-card">
+                        <a href="{% url 'product_details' product.category.slug product.slug %}">
+                            <div class="card_img">
+                                <figure class="snip1268">
+                                    <div class="image t-shirt-image">
+                                        <img src="{{product.images.url}}" alt="sq-sample4" />
+                                        <!-- <a href="#" class="add-to-cart">Add to Cart</a> -->
+                                    </div>
+                                </figure>
+                            </div>
+                        </a>
+                        <div class="card-body t-shirt-card-body">
+
+                            <div class="t-shirt-rating mt-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span>(12)</span>
+                            </div>
+
+                            <h3 class="heading t-shirt-heading">{{product.product_name}}</h3>
+
+                            <div class="price t-shirt-price">
+                                <span class="heading product-price">₹{{product.price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock main-content %}

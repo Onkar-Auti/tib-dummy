@@ -1,0 +1,223 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS Link-->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <!-- Responsive Link-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap font-icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <!-- Swiper.js Link-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <title>Khaasre-Shop | {% block title %} {% endblock title %}</title>
+</head>
+
+<body>
+
+    <!-- ------------------------- navigation section ------------------  -->
+
+    <section class="sub-nav d-flex align-items-center justify-content-center">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="heading text-center">⚡️ आमच्या सारखे आम्हीच ⚡️</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------- main navigation  -----------------------  -->
+    <section>
+        <nav id="nav">
+            <div class="wrapper">
+
+                <div class="logo desktop-image"><a href="{% url 'home' %}"><img src="/static/assets/images/logo1.png" alt=""></a></div>
+
+                <div class="responsive-nav">
+                    <div class="logo"><a href="{% url 'home' %}"><img src="/static/assets/images/logo1.png" alt=""></a></div>
+
+                    <div class="card-icons for-responsive">
+                        <i class="fa fa-search" id="showing-5"></i>
+                        <i class="fa fa-user"></i>
+
+                        <div class="cart_icon">
+                            <a href=""><i class="fa fa-cart-shopping"></i></a>
+                            <div class="cart_tag">
+                                <span class="text-xs text-white"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <input type="radio" name="slider" id="menu-btn">
+                <input type="radio" name="slider" id="close-btn">
+                <ul class="nav-links p-0 m-0">
+                    <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>
+                        <a href="#" class="desktop-item">Shop
+                            <i class='fa-solid fa-chevron-down htmlcss-arrow arrow'></i>
+                        </a>
+                        <input type="checkbox" id="showMega">
+                        <label for="showMega" class="mobile-item">Shop</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row">
+                                    <img src="/JavaScript-logo.png" alt="">
+                                </div>
+                                <div class="row">
+                                    <!-- <header>Design Services</header> -->
+                                    <ul class="mega-links">
+                                        {% for category in links|slice:'0:5'%}
+                                        <li><a href="{{ category.get_url }}">{{ category.category_name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <!-- <header>Email Services</header> -->
+                                    <ul class="mega-links">
+                                        {% for category in links|slice:'0:5'%}
+                                        <li><a href="#">{{ category.category_name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <!-- <header>Security services</header> -->
+                                    <ul class="mega-links">
+                                        {% for category in links|slice:'0:5'%}
+                                        <li><a href="#">{{ category.category_name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ul>
+                <div class="card-icons desktop-icon">
+
+                    <!-- <button onclick="myFunction()">Click Me</button> -->
+
+                    <i class="fa fa-search" id="showing-3"></i>
+                    <i class="fa fa-user"></i>
+
+                    <div class="cart_icon">
+                        <a href=""><i class="fa fa-cart-shopping"></i></a>
+
+
+                        <div class="cart_tag">
+                            <span class="text-xs text-white">{{cart_count}}</span>
+                        </div>
+                    </div>
+                </div>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+            </div>
+
+            <div id="Hidding-3" style="display:none;">
+
+                <form action="" class="search" method="GET">
+                    <div class="input-group show-input">
+                        <div class="form-outline">
+                            <input type="text" class="form-control toggle-icon shadow-none" placeholder="Search..."
+                                name="keyword" />
+
+                        </div>
+                        <button type="submit" class=" nav-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </nav>
+
+    </section>
+
+
+    <!-- ------------------------- navigation section ------------------  -->
+
+    {% block main-content %} {% endblock main-content %}
+    <!-- ------------------------- footer -----------------------  -->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="footer-content">
+                        <img src="{% static '/assets/images/logo1.png'%}" alt=""> <br>
+
+                        <!-- Search Box -->
+
+                        <!-- <form action="" class="search" method="GET">
+                            <div class="input-group">
+                                <div class="form-outline">
+                                  <input type="text" class="form-control" placeholder="Search" name="keyword"/>
+                                  <label class="form-label" for="form1">Search</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form> -->
+
+                        <!-- Search Box End -->
+                    </div>
+                    <div class="social-icons">
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-7" id="footer">
+                    <nav class="footer-nav d-md-flex justify-content-between">
+                        <ul class="m-0">
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Our Story</a></li>
+                        </ul>
+                        <ul class="m-0">
+                            <li><a href="">Shipping & Tracking</a></li>
+                            <li><a href="">Return & Replacement</a></li>
+                        </ul>
+                        <ul class="m-0">
+                            <li><a href="">Terms And Privacy Policy</a></li>
+                            <li><a href="">Size Guide</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- swiper-bundle Link -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script src="{% static 'javascript/main.js' %}"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="main.js"></script>
+</body>
+
+</html>

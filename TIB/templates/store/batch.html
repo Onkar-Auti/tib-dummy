@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Product-Detail{% endblock title %}
+{% block main-content %}
+
+{% if single_product.variations_set.all %}
+<div class="form-floating d-flex justify-content-between">
+    <select name="size" class="form-select shadow-none" id="floatingSelect" aria-label="Floating label select example" required>
+        <option value="" selected disabled>Choose </option>
+        {% for i in single_product.variations_set.batch%}
+        <option value="{{i.variation_value | lower}}" class="select-option">{{i.variation_value |capfirst}}</option>
+        {% endfor %}
+    </select>
+</div>
+
+{% endif %}
+
+{% endblock main-content %}
